@@ -17,7 +17,7 @@ public:
         if (this->Number > 9) text.setPosition(posX+8, posY+1);
         else text.setPosition(posX+20, posY+1);
         //std::cout << this->Number << std::endl;
-        this->font.loadFromFile("res/8277.ttf");
+        this->font.loadFromFile("res\\8277.ttf");
         this->text.setFont(this->font);
         this->text.setString(std::to_string(this->Number));
         this->text.setCharacterSize(45);
@@ -155,6 +155,10 @@ int main()
                 }
                 if (event.key.code == Keyboard::R)  //restart game
                 {
+                    for (it = quadsList.begin(); it != quadsList.end(); it++)
+                    {
+                        (*it)->~Quad();
+                    }
                     quadsList.clear();
                     for (int i = 0; i < HEIGHT_MAP; i++)
                         for (int j = 0; j < WIDTH_MAP; j++)
