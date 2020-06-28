@@ -21,7 +21,7 @@ public:
         this->text.setFont(this->font);
         this->text.setString(std::to_string(this->Number));
         this->text.setCharacterSize(45);
-        this->text.setColor(Color::Black);
+        this->text.setFillColor(Color::Black);
     }
     void drawQuad()
     {
@@ -96,7 +96,7 @@ void initOpenGl()
 }
 const int HEIGHT_MAP = 4;
 const int WIDTH_MAP = 4;
-sf::String Map[WIDTH_MAP]
+static sf::String Map[WIDTH_MAP]
     {
     "0000",
     "0000",
@@ -171,7 +171,7 @@ int main()
         }
         Vector2i pixelPos = Mouse::getPosition(window);
         Vector2f pos = window.mapPixelToCoords(pixelPos);
-        if (event.key.code == Mouse::Left)
+        if (event.mouseButton.button == Mouse::Left)
             for (it = quadsList.begin(); it != quadsList.end(); it++)
                 (*it)->interacteWithMap(pos, Map);
         glClear(GL_COLOR_BUFFER_BIT);
